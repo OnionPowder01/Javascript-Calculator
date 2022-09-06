@@ -15,11 +15,6 @@ let tempOperatorArray = [];
 
 // Basic sub-functions for the math ops 
 
-add(num1, num2);
-subtract(num1, num2);
-multiply(num1, num2);
-divide(num1, num2);
-
 function add(num1, num2) {
     let addValue = num1 + num2;
     console.log(`add ${num1} by ${num2} = ${addValue}`);
@@ -61,6 +56,11 @@ function operate (operator, num1, num2) {
             break;
         case '/':
             console.log("passing through switch /");
-            divide(num1, num2)
+            divide(num1, num2);
+            break;
+        default:
+            alert("ERROR!  Didn't receive an operator, or type not as expected!");
     }       
 }
+
+operate(operator, num1, num2);
