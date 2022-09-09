@@ -107,6 +107,53 @@ function runCalculator() {
 
     }
 
-
-
 }
+
+// DOM for "Clear" Button
+const clearButton = document.querySelector(".clear");
+    clearButton.addEventListener('click' , () => {location.reload();}) //Refresh in the browser
+
+
+// DOM for "+/-" Button 
+const signButton = docucment.querySelector(".sign");
+    signButton.addEventListener('click', () => {
+
+        // append " +/- " to num1 and display out
+        if (operator == '') {
+            const calcDisplay = document.querySelector("#display");
+            console.log("negative button registered here");
+            tempNum1Array.splice(0 , 1,(tempNum1Array[0] * -1).toString());
+            console.log("append the array with negative number: ", tempNum1Array);
+            num1 = tempNum1Array.join("");
+            calcDisplay.textContent = num1;
+
+            // append " +/- " to numarra1 and display out
+        } else { 
+            const calcDisplay = document.querySelector("#display");
+            console.log("negative button registered here on num2");
+            tempNum2Array.splice(0 , 1,(tempNum2Array[0] * -1).toString());
+            console.log("append the array with negative number: ", tempNum2Array);
+            num2 = tempNum2Array.join("");
+            calcDisplay.textContent = num2;
+            
+        }
+    })
+
+    // DOM for "decimal" button 
+    const decimalButton = document.querySelector('.decimal');
+    decimalButton.addEventListener('click', () => {
+        console.log('decimal pressed');
+        let decimalButton = ".";
+        const calcDisplay = document.querySelector('#display');
+
+        if(operator == '') {
+            const calcDisplay = document.querySelector('#display');
+            console.log('decimal button registered here!', decimalButton);
+            tempNum1Array.push(decimalButton);
+            console.log('append the array1 with decimal: ', tempNum1Array);
+            num1 = tempNum1Array.join('');
+            document.getElementById("decimal").disabled = true; // To disable decimal button after it is been pressed
+            console.log('num1 decimal button should be disabled now');
+
+        }
+    })
