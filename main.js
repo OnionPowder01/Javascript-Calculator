@@ -139,21 +139,65 @@ const signButton = docucment.querySelector(".sign");
         }
     })
 
+    function getOperatorSelection() {
+        const operatorButtons = document.querySelectorAll(".operator");
+        operatorButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                console.log("hit me operator!");
+                operator = button.getAttribute("value");
+                console.log(operator);
+                tempOperatorArray.push(operator);
+                console.log("store temp operator in array for string calcs: ", tempOperatorArray);
+
+                // enable the decimal button if disabled from previos click/use
+                document.getElementById("decimal").disabled = false;
+                console.log("decimal button should be ENABLED now");
+
+                // check to see if a multi-operand string exists and needs calculated on the fly
+                if ((tempNum1Array != '') && (tempNum2Array != '')) {
+                    const calcDisplay = document.querySelector('#display');
+                    num1 = tempNum1Array.join('');
+                    num2 = tempNum2Array.join('');
+                    num1 = parseFloat(num1);
+                    num2 = parseFloat(num2);
+                }
+            })
+        })
+    }
+
+
+
+
     // DOM for "decimal" button 
     const decimalButton = document.querySelector('.decimal');
     decimalButton.addEventListener('click', () => {
         console.log('decimal pressed');
         let decimalButton = ".";
         const calcDisplay = document.querySelector('#display');
-
+        // append "decimal" to numarray1 and display out
         if(operator == '') {
             const calcDisplay = document.querySelector('#display');
             console.log('decimal button registered here!', decimalButton);
             tempNum1Array.push(decimalButton);
             console.log('append the array1 with decimal: ', tempNum1Array);
             num1 = tempNum1Array.join('');
+            calcDisplay.textContent = num1;
             document.getElementById("decimal").disabled = true; // To disable decimal button after it is been pressed
             console.log('num1 decimal button should be disabled now');
 
+            // append "decimal" to numarray2 and display out
+        } else {
+            const calcDisplay = document.querySelector('#display');
+            console.log('decimal button registered here!', decimalButton);
+            tempNum2Array.push(decimalButton);
+            console.log('append the array1 with decimal: ', tempNum2Array);
+            num2 = tempNum2Array.join('');
+            calcDisplay.textContent = num2;
+            document.getElementById("decimal").disabled = true;  
+            console.log('num2 decimal button should be disabled now');
         }
     })
+
+// call the advanced sub-functions
+getNumberClicked();
+getOper
