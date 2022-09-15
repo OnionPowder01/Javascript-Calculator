@@ -100,3 +100,9 @@ button {
 .sign:active {
     background-color: #33b9bb;
 }
+
+@media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+    }
+  }
