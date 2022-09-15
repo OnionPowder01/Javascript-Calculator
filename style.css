@@ -1,6 +1,8 @@
 html {
     text-align: center;
     font-family: monospace;
+    display: flex;
+    justify-content: center;
 }
 
 #calc {
